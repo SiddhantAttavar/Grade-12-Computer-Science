@@ -1,0 +1,7 @@
+All reading and writing functions work sequentially in a text file.
+tell() method returns an integer giving the current position of handle in the file.
+The integer returned specifies the number of bytes from the beginning of the file till the current position of file handle.
+seek() method can be used to position the file at a particular place in the file. In seek method offset is used to calculate the position of file handle in the file in bytes.
+Offset is added to reference point to get the position.
+The methods defined in pickle module are used to perform I/O operations on a binary file.
+Pickling functions used with a binary file are dump and load.
