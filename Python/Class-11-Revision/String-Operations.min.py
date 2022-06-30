@@ -1,0 +1,5 @@
+s1,s2 = input().split()
+print(s1[::2],s2[::2])
+print(s1[::-1],s2[::-1])
+for c in 'aeiou':s1,s2=s1.replace(c,'#'),s2.replace(c,'#')
+print(s1,s2)
