@@ -1,0 +1,139 @@
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 5.7.25-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use school;
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_school |
++------------------+
+| bookgrt2k        |
+| books            |
+| books_issued     |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc books;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| acc_no         | varchar(5)  | NO   | PRI | NULL    |       |
+| Title          | varchar(50) | YES  | UNI | NULL    |       |
+| author         | varchar(40) | NO   |     | NULL    |       |
+| subject        | varchar(30) | YES  |     | NULL    |       |
+| publisher      | varchar(30) | YES  |     | NULL    |       |
+| year_published | int(11)     | YES  |     | NULL    |       |
+| price          | int(11)     | YES  |     | NULL    |       |
+| no_copies      | int(11)     | YES  |     | NULL    |       |
+| total          | int(11)     | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> select * from books where price < 500;
++--------+----------------------------+------------------+------------------------+-----------+----------------+-------+-----------+-------+
+| acc_no | Title                      | author           | subject                | publisher | year_published | price | no_copies | total |
++--------+----------------------------+------------------+------------------------+-----------+----------------+-------+-----------+-------+
+| B001   | Programming With Java      | Barry A Burd     | Computer Science       | Paperback |           2016 |   425 |        15 |  6375 |
+| C004   | The Complete C++ Reference | Schildt          | Computer Science       | Rediff    |           1996 |   490 |         5 |  2450 |
+| C005   | How networks work          | Frank Derfler    | Networking             | Huga      |           1999 |   400 |         7 |  2800 |
+| G001   | Web Designing              | Hirdesh Bhardwaj |                        | Paperback |           2017 |   475 |        20 |  9500 |
+| M001   | Cloud Computing            | Ray Rafael       | Information Technology | Prime     |           2015 |   450 |         3 |  1350 |
++--------+----------------------------+------------------+------------------------+-----------+----------------+-------+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select Title, author, subject from books where price < 500;
++----------------------------+------------------+------------------------+
+| Title                      | author           | subject                |
++----------------------------+------------------+------------------------+
+| Programming With Java      | Barry A Burd     | Computer Science       |
+| The Complete C++ Reference | Schildt          | Computer Science       |
+| How networks work          | Frank Derfler    | Networking             |
+| Web Designing              | Hirdesh Bhardwaj |                        |
+| Cloud Computing            | Ray Rafael       | Information Technology |
++----------------------------+------------------+------------------------+
+5 rows in set (0.00 sec)
+
+mysql> desc books_issued;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| accno       | varchar(5)  | YES  |     | NULL    |       |
+| member_name | varchar(25) | NO   | PRI | NULL    |       |
+| date_issued | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select * from books_issued;
+Empty set (0.03 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_school |
++------------------+
+| bookgrt2k        |
+| books            |
+| books_issued     |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc bookgrt2k;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| acc_no         | varchar(5)  | NO   |     | NULL    |       |
+| title          | varchar(40) | NO   |     | NULL    |       |
+| author         | varchar(40) | NO   |     | NULL    |       |
+| subject        | varchar(30) | YES  |     | NULL    |       |
+| publisher      | varchar(30) | YES  |     | NULL    |       |
+| year_published | int(11)     | YES  |     | NULL    |       |
+| price          | int(11)     | YES  |     | NULL    |       |
+| no_copies      | int(11)     | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+mysql> select * from bookgrt2k;
++--------+-------------------------------+-------------------------+------------------------+-----------+----------------+-------+-----------+
+| acc_no | title                         | author                  | subject                | publisher | year_published | price | no_copies |
++--------+-------------------------------+-------------------------+------------------------+-----------+----------------+-------+-----------+
+| B001   | Programming With Java         | Barry A Burd            | Computer Science       | Paperback |           2016 |   425 |        15 |
+| C002   | Beginning C++                 | Ivor Horton             | Computer Science       | Flipkart  |           2001 |   525 |         5 |
+| C009   | Digital Image Processing      | Computer Science        | Gonzalez and Woods     | Pearson   |           2015 |   750 |         5 |
+| CS03   | Programming Python            | Mark Lutz               |                        | Prime     |           2011 |  1150 |      NULL |
+| G001   | Web Designing                 | Hirdesh Bhardwaj        |                        | Paperback |           2017 |   475 |        20 |
+| K001   | Cracking the Coding Interview | Gayle Laakmann McDowell | Computer Science       |           |           2008 |   599 |      NULL |
+| M001   | Cloud Computing               | Ray Rafael              | Information Technology | Prime     |           2015 |   450 |         3 |
+| P001   | Internet Of Things            | Arsheep Bahga           | Information Technology | Paperback |           2015 |   587 |         4 |
++--------+-------------------------------+-------------------------+------------------------+-----------+----------------+-------+-----------+
+8 rows in set (0.03 sec)
+
+mysql> select acc_no, subject from bookgrt2k where no_copies > 5;
++--------+------------------+
+| acc_no | subject          |
++--------+------------------+
+| B001   | Computer Science |
+| G001   |                  |
++--------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> select acc_no, subject, title from bookgrt2k where no_copies >= 5;
++--------+--------------------+--------------------------+
+| acc_no | subject            | title                    |
++--------+--------------------+--------------------------+
+| B001   | Computer Science   | Programming With Java    |
+| C002   | Computer Science   | Beginning C++            |
+| C009   | Gonzalez and Woods | Digital Image Processing |
+| G001   |                    | Web Designing            |
++--------+--------------------+--------------------------+
+4 rows in set (0.00 sec)
+
+mysql>
