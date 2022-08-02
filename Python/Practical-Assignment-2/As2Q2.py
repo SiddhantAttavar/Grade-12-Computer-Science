@@ -34,6 +34,13 @@ data = [
 ]
 with open(fileName, 'wb') as file:
     pickle.dump(data, file)
-displayBikes(fileName)
-addBike(fileName)
-displayDetails(fileName)
+while True:
+    op = input('Enter operation: Display headsets (D), Add bike (A) Display Products from Make (M), Exit(E): ').upper()
+    if op == 'D':
+        displayBikes(fileName)
+    elif op == 'A':
+        addBike(fileName)
+    elif op == 'M':
+        displayDetails(fileName)
+    else:
+        break

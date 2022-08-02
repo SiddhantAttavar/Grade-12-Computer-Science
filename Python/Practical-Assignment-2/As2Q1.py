@@ -49,6 +49,13 @@ data = [
 ]
 with open(fileName, 'wb') as file:
     pickle.dump(data, file)
-displayHeadsets(fileName)
-costRange(fileName)
-deleteProduct(fileName)
+while True:
+    op = input('Enter operation: Display headsets (D), Find Cost Range (F) Delete Product (R), Exit (E): ').upper()
+    if op == 'D':
+        displayHeadsets(fileName)
+    elif op == 'F':
+        costRange(fileName)
+    elif op == 'R':
+        deleteProduct(fileName)
+    else:
+        break
