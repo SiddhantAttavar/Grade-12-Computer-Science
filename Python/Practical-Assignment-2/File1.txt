@@ -1,0 +1,8 @@
+Text File
+These files can be read by human directly.
+Each line is terminated by a special character, known as EOL.
+Processing of file is slower than binary file.
+Binary File
+These files cannot be read by humans directly.
+No delimeter for a line.
+Processing of file is faster than text file.
