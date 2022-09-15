@@ -1,2 +1,0 @@
-Phrase 1
-Hello World
