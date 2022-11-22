@@ -35,7 +35,7 @@ data = [
 with open(fileName, 'wb') as file:
     pickle.dump(data, file)
 while True:
-    op = input('Enter operation: Display headsets (D), Add bike (A) Display Products from Make (M), Exit(E): ').upper()
+    op = input('Enter operation: Display bikes (D), Add bike (A) Display Products from Make (M), Exit(E): ').upper()
     if op == 'D':
         displayBikes(fileName)
     elif op == 'A':
@@ -44,3 +44,4 @@ while True:
         displayDetails(fileName)
     else:
         break
+

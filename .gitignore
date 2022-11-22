@@ -1,4 +1,5 @@
-# File handling
+# Output files
 *.txt
+*.csv
 *.bin
 *.dat
